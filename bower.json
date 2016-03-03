@@ -1,0 +1,22 @@
+{
+  "name": "google_search",
+  "description": "",
+  "main": "\"\"",
+  "authors": [
+    "TFMV"
+  ],
+  "license": "ISC",
+  "moduleType": [
+    "globals"
+  ],
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "static/bower_modules/",
+    "test",
+    "tests"
+  ]
+}

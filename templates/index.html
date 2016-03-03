@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>WF Google-Search Prototype</title>
+	<link rel="stylesheet" href="/static/bower_components/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/static/css/main.css">
+	<script src='/static/bower_components/lodash/dist/lodash.min.js'></script>
+	<script src='/static/bower_components/angular/angular.min.js'></script>
+	<script src='/static/bower_components/angular-resource/angular-resource.min.js'></script>
+	<script src='/static/bower_components/angular-animate/angular-animate.min.js'></script>
+	<script src='/static/bower_components/angular-bootstrap/ui-bootstrap.min.js'></script>
+	<script src='/static/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js'></script>
+	<script src='/static/bower_components/angularjs-dropdown-multiselect/dist/angularjs-dropdown-multiselect.min.js'></script>
+	<script src='/static/js/app.module.js'></script>
+</head>
+<body ng-app='App' ng-controller='AppController'>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-3 col-xs-3 col-sm-3">
+				<div class="logo">
+					<img src="/static/img/freelancer_logo.jpg" alt="Logo" />
+				</div>
+				<div class="search_box">
+					<label>Select search term below</label>
+					<select name="terms" id="terms" class="form-control" ng-click="sendTerm()" ng-disabled="dataIsLoading">
+						<option value="None" disabled selected>Select term</option>
+						{% for title in terms %}
+							<option value="{{ title.term }}" >{{ title.term }}</option>
+						{% endfor %}
+					</select>
+				</div>
+			</div>
+			<div class="col-md-9 col-xs-9 col-sm-9">
+				<div class="top_info">
+					<ul>
+						<li>Searches today: <span id="today"> {{ searchesToday }}</span></li>
+						<li>Remaining searches: <span id="remainig"> {{ remainingSearches }}</span></li>
+					</ul>
+				</div>
+				<div class="data_table">
+					<table class="table table-hover table-stripped" ng-if="tableData">
+						<thead>
+							<tr>
+								<th>Result Order</th>
+								<th>URL</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="row in tableData track by $index">
+								<td>[[ $index + 1 ]]</td>
+								<td>[[ row ]]</td>
+							</tr>
+						</tbody>
+						<h3 ng-if="!tableData && !limit">Select search term</h3>
+						<h3 ng-if="limit">Limit exceeded</h3>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

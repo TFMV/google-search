@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block css %}
+	<link rel="stylesheet" href="/static/bower_components/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/static/css/main.css">
+{% endblock %}
+{% block js %}
+	<script src='/static/bower_components/lodash/dist/lodash.min.js'></script>
+	<script src='/static/bower_components/angular/angular.min.js'></script>
+	<script src='/static/bower_components/angular-resource/angular-resource.min.js'></script>
+	<script src='/static/bower_components/angular-animate/angular-animate.min.js'></script>
+	<script src='/static/bower_components/angular-bootstrap/ui-bootstrap.min.js'></script>
+	<script src='/static/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js'></script>
+	<script src='/static/bower_components/angularjs-dropdown-multiselect/dist/angularjs-dropdown-multiselect.min.js'></script>
+	<script src='/static/js/app.module.js'></script>
+{% endblock %}
+{% block content %}
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-4 col-sm-4 col-md-4 col-xs-offset-6 col-sm-offset-6 col-md-offset-4 user_auth">
+			  <h1 class="text-center">User authentication</h1>
+			  <form method="post" action="/signin/">
+					<div class="form-group">
+						<label>Login</label>
+						<input type="text" class="form-control" placeholder="Email" name="username">
+					</div>
+					<div class="form-group">
+						<label>Password</label>
+						<input type="password" class="form-control" placeholder="Password" name="password">
+					</div>
+					<button type="submit" class="btn btn-default">Log in</button>
+			  </form>
+			</div>
+		</div>
+	</div>
+{% endblock %}
